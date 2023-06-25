@@ -64,10 +64,10 @@
     "last 2 versions",
     "not dead"
   ],
-  "author": "UncleYuan",
+  "author": "yunyaokj",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/UncleYuan/ak-vue-components/issues"
+    "url": "https://github.com/yunyaokj/ak-vue-components/issues"
   },
-  "homepage": "https://github.com/UncleYuan/ak-vue-components#readme"
+  "homepage": "https://github.com/yunyaokj/ak-vue-components#readme"
 }
