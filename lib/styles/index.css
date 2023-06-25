@@ -1,0 +1,27 @@
+.filter-container {
+  padding-bottom: 10px;
+}
+.filter-container .filter-item {
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.filter-container .search-item {
+  margin-right: 10px;
+  width: 190px;
+}
+
+.filter-container .date-range-item {
+  margin-right: 10px;
+  width: 240px;
+}
+
+.filter-container .search-daterange {
+  margin-right: 10px;
+  width: 390px;
+}
+
+.filter-container .filter-item.el-button {
+  margin-left: 0;
+  margin-right: 10px;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "ak-vue-components",
+  "version": "1.1.9",
+  "description": "a vue  component frame",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "build:lib": "webpack --config lib.config.js"
+  },
+  "main": "libDist/index.js",
+  
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "author": "UncleYuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UncleYuan/ak-vue-components/issues"
+  },
+  "homepage": "https://github.com/UncleYuan/ak-vue-components#readme"
+}
