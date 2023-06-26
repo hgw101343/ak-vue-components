@@ -1,7 +1,7 @@
 {
   "name": "ak-vue-components",
-  "version": "1.1.9",
-  "description": "a vue  component frame",
+  "version": "1.0.0",
+  "description": "阿康前端组件",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -18,7 +18,6 @@
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
-    
     "normalize.css": "^8.0.1",
     "sass": "^1.62.1",
     "vue": "^2.6.12",
