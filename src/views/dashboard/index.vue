@@ -12,6 +12,8 @@
         slot-scope="{ queryParams, search, reset }"
         class="filter-container"
       >
+      <ak-filter-form   :is-many="isMany"
+      @change="isMany = !isMany">
         <el-input
           v-model="queryParams.unitInfo"
           :placeholder="'分拥单元ID/名称'"
@@ -29,6 +31,7 @@
           class="filter-item search-item"
           placeholder="状态"
           clearable
+          v-if="isMany"
         >
           <el-option
             v-for="item in statusOptions"
@@ -43,6 +46,7 @@
           class="filter-item search-item"
           placeholder="类型"
           clearable
+          v-if="isMany"
         >
           <el-option
             v-for="item in typeOptions"
@@ -51,7 +55,7 @@
             :value="item.value"
           />
         </el-select>
-
+      </ak-filter-form>
         <el-button class="filter-item" type="primary" @click="search">
           搜索
         </el-button>
@@ -173,7 +177,14 @@
         class-name="small-padding fixed-width"
         fixed="right"
       >
-        <template slot-scope="{ row, }">
+      <template slot-scope="{ row }">
+        <ak-operate-icon
+          :data-list="getIconList(row)"
+          @click="(e) => operateEven(e, row)"
+          :key='`${row.id}${row.status}`'
+        />
+      </template>
+        <!-- <template slot-scope="{ row, }">
           <el-button
             v-hasPermission="['productCommission:update']"
             type="text"
@@ -205,7 +216,7 @@
           >
             删除
           </ak-request-button>
-        </template>
+        </template> -->
       </el-table-column>
     </ak-data-table>
   </div>
@@ -239,7 +250,8 @@ export default {
           value: 1,
           label: '启用'
         }
-      ]
+      ],
+      isMany: false
     };
   },
   computed: {
@@ -248,6 +260,23 @@ export default {
   created() {},
   destroyed() {},
   methods: {
+    getIconList(row){
+      const iconList =  [
+          {
+            label: '修改',
+            type: 'edit',
+            iconClass: 'el-icon-edit',
+            color: '#46a6ff'
+          },
+          {
+            label: this.findArrayVal(this.statusOptions, row.status == 1 ? 0 : 1),
+            type: 'setting',
+            iconClass: 'el-icon-setting',
+            color: '#46a6ff'
+          },
+        ]
+      return iconList
+    },
     reloadList() {
       this.$refs.table.search();
     },
@@ -275,7 +304,25 @@ export default {
         }
       });
       return findVal;
-    }
+    },
+     // 根据操作栏图标(iconList)的type值进行多分支选择
+     operateEven(type, row) {
+        switch (type) {
+          case 'edit':
+            this.edit(row)
+            break
+          case 'setting':
+            this.setting(row)
+            break
+            
+        }
+      },
+      edit(row){
+        console.log('编辑',row)
+      },
+      setting(row){
+        console.log('编辑',row)
+      }
   }
 };
 </script>
