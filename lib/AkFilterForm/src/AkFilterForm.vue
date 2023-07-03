@@ -2,46 +2,75 @@
  * @Author: huanggengwu 'yunyaokj@gmail.com'
  * @Date: 2023-06-26 15:00:50
  * @LastEditors: huanggengwu 'yunyaokj@gmail.com'
- * @LastEditTime: 2023-06-26 15:16:56
+ * @LastEditTime: 2023-07-03 10:20:58
  * @FilePath: \zujian\ak-vue-components\lib\AkFilterForm\src\AkFilterForm.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
-<template>
+<!-- <template>
   <div class="filter-containe">
     <slot />
-    <el-link type="primary" @click="change">
-      {{ isMany ? '收起' : '展开' }}
-      <i :class="isMany ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
+    <el-link type="primary" @click="$emit('input', !value)" >
+      {{ value ? '收起' : '展开' }}
+      <i :class="value ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"></i>
     </el-link>
   </div>
-</template>
+</template> -->
 
 <script>
   export default {
     name: 'AkFilterForm',
     props: {
-      // 是否展示更多
-      isMany: {
+      value: {
         type: Boolean,
-        default: false,
+        default: false
       },
-      // 简易搜索下还存在的字段名
-      liveValues: {
-        type: Array,
-        default: () => [],
+      form: {
+        type: Object,
+        default: () => {}
       },
+      num: {
+        type: Number,
+        default: 2
+      }
     },
     data() {
       return {}
     },
     mounted() {
-      console.log('执行几次表单')
     },
     methods: {
-      change() {
-        this.$emit('change')
-      },
+      handleClick(){
+        this.$emit('input', !this.value)
+      }
     },
+    render() {
+      return (
+        <div class="filter-containe">
+          {this.$scopedSlots.default().map((i,index) => {
+            if (i.data) {
+              i.data.attrs.style= !this.value && index > this.num - 1 ?'display: none':''
+              return i
+            }
+            return i
+          })}
+          {
+            h('el-link', {
+              on:{
+                click: this.handleClick
+              },
+              attrs: {
+                type: 'primary'
+              }
+            },[
+              this.value? '收起': '展开',
+              h('i', {
+                class: this.value ? 'el-icon-arrow-up' : 'el-icon-arrow-down',
+              }),
+            ])
+          }
+        </div>
+      )
+    }
   }
 </script>
 <style lang="scss" scoped></style>

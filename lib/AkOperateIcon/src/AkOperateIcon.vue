@@ -2,7 +2,7 @@
  * @Author: huanggengwu 'yunyaokj@gmail.com'
  * @Date: 2023-06-26 14:55:21
  * @LastEditors: huanggengwu 'yunyaokj@gmail.com'
- * @LastEditTime: 2023-06-26 15:27:45
+ * @LastEditTime: 2023-07-03 10:50:08
  * @FilePath: \zujian\ak-vue-components\lib\AkOperateIcon\src\AkOperateIcon.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -101,4 +101,11 @@
     },
   }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.table-operation_box{
+  .table-operation{
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}
+</style>

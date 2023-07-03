@@ -12,8 +12,8 @@
         slot-scope="{ queryParams, search, reset }"
         class="filter-container"
       >
-      <ak-filter-form   :is-many="isMany"
-      @change="isMany = !isMany">
+      <!--  slot-scope="{ form }" :form="queryParams" :num="2" -->
+      <ak-filter-form v-model="isMany" :num="2" >
         <el-input
           v-model="queryParams.unitInfo"
           :placeholder="'分拥单元ID/名称'"
@@ -31,7 +31,6 @@
           class="filter-item search-item"
           placeholder="状态"
           clearable
-          v-if="isMany"
         >
           <el-option
             v-for="item in statusOptions"
@@ -46,7 +45,6 @@
           class="filter-item search-item"
           placeholder="类型"
           clearable
-          v-if="isMany"
         >
           <el-option
             v-for="item in typeOptions"
