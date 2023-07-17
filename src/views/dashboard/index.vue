@@ -180,6 +180,7 @@
           :data-list="getIconList(row)"
           @click="(e) => operateEven(e, row)"
           :key='`${row.id}${row.status}`'
+          type="text"
         />
       </template>
         <!-- <template slot-scope="{ row, }">
@@ -272,7 +273,20 @@ export default {
             iconClass: 'el-icon-setting',
             color: '#46a6ff'
           },
+          {
+            label: '操作1',
+            type: 'edit1',
+            iconClass: 'el-icon-edit',
+            color: 'red'
+          },
+          {
+            label: '操作2',
+            type: 'edit1',
+            iconClass: 'el-icon-edit',
+            color: 'red'
+          },
         ]
+        console.log(iconList, '555')
       return iconList
     },
     reloadList() {
